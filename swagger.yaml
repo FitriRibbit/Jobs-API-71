@@ -1,0 +1,209 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: jobs API
+  contact: {}
+host: jobs-api-071.herokuapp.com
+basePath: /api/v1
+securityDefinitions: {}
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /auth/register:
+    post:
+      summary: Register User
+      tags:
+      - Auth
+      operationId: RegisterUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/RegisterUserRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /auth/login:
+    post:
+      summary: Login User
+      tags:
+      - Auth
+      operationId: LoginUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/LoginUserRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /jobs:
+    post:
+      summary: Create Job
+      tags:
+      - Jobs
+      operationId: CreateJob
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/CreateJobRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    get:
+      summary: Get All Jobs
+      tags:
+      - Jobs
+      operationId: GetAllJobs
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The user ID
+    get:
+      summary: Get Single Job
+      tags:
+      - Jobs
+      operationId: GetSingleJob
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  
+    patch:
+      summary: Update Job
+      tags:
+      - Jobs
+      operationId: UpdateJob
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UpdateJobRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  
+    delete:
+      summary: Delete Job
+      tags:
+      - Jobs
+      operationId: DeleteJob
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+definitions:
+  RegisterUserRequest:
+    title: RegisterUserRequest
+    example:
+      name: Tatera
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+    - name
+  LoginUserRequest:
+    title: LoginUserRequest
+    example:
+      email: Johny10@yahoo.com
+      password: secret
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+  CreateJobRequest:
+    title: CreateJobRequest
+    example:
+      company: netflix
+      position: QA Tester
+    type: object
+    properties:
+      company:
+        type: string
+      position:
+        type: string
+    required:
+    - company
+    - position
+  UpdateJobRequest:
+    title: UpdateJobRequest
+    example:
+      company: random
+      position: fullstack developer
+    type: object
+    properties:
+      company:
+        type: string
+      position:
+        type: string
+    required:
+    - company
+    - position
+security: []
+tags:
+- name: Auth
+  description: ''
+- name: Jobs
+  description: ''
